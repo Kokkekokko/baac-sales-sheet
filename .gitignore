@@ -1,0 +1,6 @@
+.DS_Store
+.olw/chroma/
+.olw/state.db
+.olw/compare/
+.obsidian/workspace.json
+*.log

@@ -1,0 +1,26 @@
+[models]
+fast = "claude-opus-5-5"
+heavy = "claude-opus-5-5"
+# Optional: set heavy = fast to use a single model for everything
+
+[provider]
+name = "custom"
+url = "https://api.anthropic.com/v1"
+timeout = 300
+fast_ctx = 200000                 # Claude Opus 5.5 has a 1M window; 200K keeps requests bounded
+heavy_ctx = 200000                # context window hint (tokens)
+
+[pipeline]
+auto_approve = false
+auto_commit = true
+auto_maintain = false
+watch_debounce = 3.0
+max_concepts_per_source = 8
+ingest_parallel = false   # true = parallel chunks
+article_max_tokens = 16384 # soft cap on generated tokens per article; auto-reduced to fit context
+concept_draft_soft_cap = 2400 # concept-driven compile only; set to "article_max_tokens" to disable extra capping (no effect on --legacy)
+# inline_source_citations = false  # Experimental: add inline source links
+# source_citation_style = "legend-only"  # legend-only | inline-wikilink
+# draft_media = "reference"  # reference | embed | omit
+graph_quality_checks = true
+language = "th"  # wiki content is Thai
